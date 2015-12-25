@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		B5A43AB71C2DB95400CC07A5 /* DPad.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A43AB61C2DB95400CC07A5 /* DPad.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A43AF01C2DBD5600CC07A5 /* DPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A43AEF1C2DBD5600CC07A5 /* DPad.swift */; };
+		B5A43AF21C2DBDBB00CC07A5 /* Vec2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A43AF11C2DBDBB00CC07A5 /* Vec2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B5A43AB31C2DB95400CC07A5 /* DPad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DPad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A43AB61C2DB95400CC07A5 /* DPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPad.h; sourceTree = "<group>"; };
 		B5A43AB81C2DB95400CC07A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5A43AEF1C2DBD5600CC07A5 /* DPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPad.swift; sourceTree = "<group>"; };
+		B5A43AF11C2DBDBB00CC07A5 /* Vec2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vec2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +50,20 @@
 		B5A43AB51C2DB95400CC07A5 /* DPad */ = {
 			isa = PBXGroup;
 			children = (
+				B5A43AEE1C2DBD3E00CC07A5 /* Classes */,
 				B5A43AB61C2DB95400CC07A5 /* DPad.h */,
 				B5A43AB81C2DB95400CC07A5 /* Info.plist */,
 			);
 			path = DPad;
+			sourceTree = "<group>";
+		};
+		B5A43AEE1C2DBD3E00CC07A5 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B5A43AEF1C2DBD5600CC07A5 /* DPad.swift */,
+				B5A43AF11C2DBDBB00CC07A5 /* Vec2.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +88,7 @@
 				B5A43AAF1C2DB95400CC07A5 /* Frameworks */,
 				B5A43AB01C2DB95400CC07A5 /* Headers */,
 				B5A43AB11C2DB95400CC07A5 /* Resources */,
+				B5A43AFA1C2DC44C00CC07A5 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -125,11 +140,30 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B5A43AFA1C2DC44C00CC07A5 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B5A43AAE1C2DB95400CC07A5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A43AF01C2DBD5600CC07A5 /* DPad.swift in Sources */,
+				B5A43AF21C2DBDBB00CC07A5 /* Vec2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +262,7 @@
 		B5A43ABC1C2DB95400CC07A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -238,12 +273,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattbuckley.DPad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		B5A43ABD1C2DB95400CC07A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -276,6 +313,7 @@
 				B5A43ABD1C2DB95400CC07A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

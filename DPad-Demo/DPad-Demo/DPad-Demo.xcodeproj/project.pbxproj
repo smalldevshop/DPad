@@ -14,7 +14,7 @@
 		B5A43AD41C2DB97600CC07A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A43AD21C2DB97600CC07A5 /* Main.storyboard */; };
 		B5A43AD61C2DB97600CC07A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5A43AD51C2DB97600CC07A5 /* Assets.xcassets */; };
 		B5A43AD91C2DB97600CC07A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A43AD71C2DB97600CC07A5 /* LaunchScreen.storyboard */; };
-		B5A43AED1C2DBBE000CC07A5 /* DPad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A43AEC1C2DBBD100CC07A5 /* DPad.framework */; };
+		B5A43AF61C2DC32C00CC07A5 /* DPad.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A43AEC1C2DBBD100CC07A5 /* DPad.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,7 +25,28 @@
 			remoteGlobalIDString = B5A43AB31C2DB95400CC07A5;
 			remoteInfo = DPad;
 		};
+		B5A43AF71C2DC32C00CC07A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5A43AE71C2DBBD100CC07A5 /* DPad.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B5A43AB21C2DB95400CC07A5;
+			remoteInfo = DPad;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B5A43AF91C2DC32C00CC07A5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B5A43AF61C2DC32C00CC07A5 /* DPad.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B5A43AC71C2DB97600CC07A5 /* DPad-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DPad-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,7 +66,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5A43AED1C2DBBE000CC07A5 /* DPad.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,10 +122,12 @@
 				B5A43AC31C2DB97600CC07A5 /* Sources */,
 				B5A43AC41C2DB97600CC07A5 /* Frameworks */,
 				B5A43AC51C2DB97600CC07A5 /* Resources */,
+				B5A43AF91C2DC32C00CC07A5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B5A43AF81C2DC32C00CC07A5 /* PBXTargetDependency */,
 			);
 			name = "DPad-Demo";
 			productName = "DPad-Demo";
@@ -187,6 +209,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B5A43AF81C2DC32C00CC07A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DPad;
+			targetProxy = B5A43AF71C2DC32C00CC07A5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B5A43AD21C2DB97600CC07A5 /* Main.storyboard */ = {
@@ -293,6 +323,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "DPad-Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mattbuckley.DPad-Demo";
@@ -304,6 +335,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "DPad-Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mattbuckley.DPad-Demo";
@@ -330,6 +362,7 @@
 				B5A43ADF1C2DB97600CC07A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
