@@ -12,12 +12,11 @@ import SpriteKit
 
 public protocol DPadDelegate {
     func directionDidChange(direction: DPad.Direction)
-    func touchesEnded(forDpad dPad: DPad)
 }
 
 final public class DPad: SKNode {
 
-    var delegate: DPadDelegate?
+    public var delegate: DPadDelegate?
     var movementVector: Vec2 = Vec2(x: 0.0, y: 0.0)
     var initialPosition: CGPoint?
 
@@ -126,7 +125,6 @@ final public class DPad: SKNode {
     public override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesEnded(touches, withEvent: event)
         delegate?.directionDidChange(.None)
-        delegate?.touchesEnded(forDpad: self)
     }
 
 }
