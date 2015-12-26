@@ -10,6 +10,7 @@
 		B5A43AB71C2DB95400CC07A5 /* DPad.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A43AB61C2DB95400CC07A5 /* DPad.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5A43AF01C2DBD5600CC07A5 /* DPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A43AEF1C2DBD5600CC07A5 /* DPad.swift */; };
 		B5A43AF21C2DBDBB00CC07A5 /* Vec2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A43AF11C2DBDBB00CC07A5 /* Vec2.swift */; };
+		B5A43B021C2DFA3800CC07A5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5A43B011C2DFA3800CC07A5 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +19,7 @@
 		B5A43AB81C2DB95400CC07A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5A43AEF1C2DBD5600CC07A5 /* DPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPad.swift; sourceTree = "<group>"; };
 		B5A43AF11C2DBDBB00CC07A5 /* Vec2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vec2.swift; sourceTree = "<group>"; };
+		B5A43B011C2DFA3800CC07A5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 				B5A43AEE1C2DBD3E00CC07A5 /* Classes */,
 				B5A43AB61C2DB95400CC07A5 /* DPad.h */,
 				B5A43AB81C2DB95400CC07A5 /* Info.plist */,
+				B5A43B011C2DFA3800CC07A5 /* Images.xcassets */,
 			);
 			path = DPad;
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A43B021C2DFA3800CC07A5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

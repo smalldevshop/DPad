@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SpriteKit
 
-protocol DPadDelegate {
+public protocol DPadDelegate {
     func directionDidChange(direction: DPad.Direction)
     func touchesEnded(forDpad dPad: DPad)
 }
@@ -48,10 +48,13 @@ final public class DPad: SKNode {
     var backGround: SKSpriteNode?
     private var dPad: SKSpriteNode?
 
-    public class func new(backgroundTexture: SKTexture,
+    public class func new(backgroundTexture: SKTexture? = nil,
         supportedDirections: Set<Direction>) -> DPad {
             let dPad = DPad()
-            dPad.backgroundTexture = backgroundTexture
+
+            let frameworkBundle = NSBundle(forClass: self)
+            let defaultBackgroundImage = UIImage(named: "thumbDefault", inBundle: frameworkBundle, compatibleWithTraitCollection: nil)
+            dPad.backgroundTexture = backgroundTexture ?? SKTexture(image: defaultBackgroundImage!)
             dPad.supportedDirections = supportedDirections
 
             return dPad

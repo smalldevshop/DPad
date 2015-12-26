@@ -8,28 +8,28 @@
 
 import Foundation
 
-public struct Vec2 {
+struct Vec2 {
 
-    public var x: CGFloat = 0.0
-    public var y: CGFloat = 0.0
+    var x: CGFloat = 0.0
+    var y: CGFloat = 0.0
 
-    public init(x: CGFloat, y: CGFloat) {
+    init(x: CGFloat, y: CGFloat) {
         self.x = x
         self.y = y
     }
 
     /// Computed point from vector.
-    public var point: CGPoint {
+    var point: CGPoint {
         return CGPointMake(x, y)
     }
 
     /// Computed length of vector.
-    public var length: CGFloat {
+    var length: CGFloat {
         return sqrt(x * x + y * y)
     }
 
     /// Computed magnitude of vector
-    public var magnitude: CGFloat {
+    var magnitude: CGFloat {
         return hypot(x, y)
     }
 
@@ -40,14 +40,14 @@ public struct Vec2 {
 
      - returns: a Vec2 scaled by the factor passed in.
      */
-    public mutating func scale(byFactor factor: CGFloat) -> Vec2 {
+    mutating func scale(byFactor factor: CGFloat) -> Vec2 {
         x = x * factor
         y = y * factor
         return self
     }
 
     /// Computed angle of vector relative to x axis.
-    public var angle: CGFloat {
+    var angle: CGFloat {
         return atan2(self.y, self.x)
     }
 
@@ -59,7 +59,7 @@ public struct Vec2 {
 
      - returns: a CGFloat representing the cross product of the 2 vectors.
      */
-    public func crossProduct(vector1: Vec2, vector2: Vec2) -> CGFloat {
+    func crossProduct(vector1: Vec2, vector2: Vec2) -> CGFloat {
         return (vector1.x * vector2.y - vector1.y * vector2.x)
     }
 
@@ -71,7 +71,7 @@ public struct Vec2 {
 
      - returns: a CGFloat representing the dot product of the 2 vectors.
      */
-    public func dotProduct(vector1: Vec2, vector2: Vec2) -> CGFloat {
+    func dotProduct(vector1: Vec2, vector2: Vec2) -> CGFloat {
         return vector1.x * vector2.x + vector1.y * vector2.y
     }
 
