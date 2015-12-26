@@ -20,12 +20,12 @@ final public class DPad: SKNode {
     var movementVector: Vec2 = Vec2(x: 0.0, y: 0.0)
     var initialPosition: CGPoint?
 
-    public enum Direction {
-        case None
-        case Left
-        case Right
-        case Up
-        case Down
+    public enum Direction: Vec2 {
+        case None = "{0, 0}"
+        case Left = "{-1, 0}"
+        case Right = "{1, 0}"
+        case Up = "{0, 1}"
+        case Down = "{0, -1}"
     }
 
     var supportedDirections: Set<Direction> = Set()

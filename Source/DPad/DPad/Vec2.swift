@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Vec2 {
+public struct Vec2 {
 
     var x: CGFloat = 0.0
     var y: CGFloat = 0.0
@@ -96,4 +96,27 @@ extension Vec2 {
         return direction
     }
 
+}
+
+extension Vec2: StringLiteralConvertible {
+    public init(stringLiteral value: StringLiteralType) {
+        let point = CGPointFromString(value)
+        self = Vec2(x: point.x, y: point.y)
+    }
+
+    public init(extendedGraphemeClusterLiteral value: StringLiteralType) {
+        let point = CGPointFromString(value)
+        self = Vec2(x: point.x, y: point.y)
+    }
+
+    public init(unicodeScalarLiteral value: StringLiteralType) {
+        let point = CGPointFromString(value)
+        self = Vec2(x: point.x, y: point.y)
+    }
+}
+
+extension Vec2: Equatable {}
+
+public func == (lhs: Vec2, rhs: Vec2) -> Bool {
+    return lhs.x == rhs.x && lhs.y == rhs.y
 }
