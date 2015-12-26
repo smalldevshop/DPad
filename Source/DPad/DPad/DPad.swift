@@ -99,23 +99,18 @@ final public class DPad: SKNode {
         dPad?.position.x += constrainedVec.point.x
         dPad?.position.y += constrainedVec.point.y
 
-        // Only update direction if vector magnitude is sufficently large.
-        if constrainedVec.magnitude > 1.5 {
+        // Only update direction if vector magnitude is greater than pi/2
+        if constrainedVec.magnitude > CGFloat(M_PI_2) {
             switch constrainedVec.direction(constrainedVec.angle) {
             case .None:
-                print("None: \(constrainedVec.angle)")
                 delegate?.directionDidChange(.None)
             case .Up:
-                print("up: \(constrainedVec.angle)")
                 delegate?.directionDidChange(.Up)
             case .Down:
-                print("down: \(constrainedVec.angle)")
                 delegate?.directionDidChange(.Down)
             case .Right:
-                print("right: \(constrainedVec.angle)")
                 delegate?.directionDidChange(.Right)
             case .Left:
-                print("left: \(constrainedVec.angle)")
                 delegate?.directionDidChange(.Left)
             }
         }
@@ -124,9 +119,17 @@ final public class DPad: SKNode {
 
     public override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesEnded(touches, withEvent: event)
+
+        // Update delegate
         delegate?.directionDidChange(.None)
     }
 
+    override public var position: CGPoint {
+        didSet {
+            // Recenter DPad when position of parent node is set.
+            dPad?.position = CGPointZero
+        }
+    }
 }
 
 private extension DPad {
@@ -142,14 +145,14 @@ private extension DPad {
     func constrainedVector(vector: Vec2, supportedDirections: Set<Direction>) -> Vec2 {
         var vec = Vec2(x: 0.0, y: 0.0)
         switch supportedDirections.intersect([.Up, .Down, .Left, .Right]) {
-        case [.Up, .Down]:
-            vec.y = vector.y
-        case [.Left, .Right]:
-            vec.x = vector.x
-        case [.Up, .Down, .Left, .Right]:
-            vec = vector
-        default:
-            break
+            case [.Up, .Down]:
+                vec.y = vector.y
+            case [.Left, .Right]:
+                vec.x = vector.x
+            case [.Up, .Down, .Left, .Right]:
+                vec = vector
+            default:
+                break
         }
         return vec
     }
