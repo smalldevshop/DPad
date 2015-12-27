@@ -13,7 +13,6 @@ import SpriteKit
 final public class DPad: SKNode {
 
     public var direction: DPad.Direction = DPad.Direction.None
-    var initialPosition: CGPoint?
 
     public enum Direction: Vec2 {
         case None = "{0, 0}"
@@ -30,25 +29,24 @@ final public class DPad: SKNode {
             let textureSize = backgroundTexture?.size() ?? CGSizeZero
             let backgroundDiameter = min(textureSize.width, textureSize.height)
 
-            backGround?.texture = backgroundTexture
-            backGround?.size = CGSizeMake(backgroundDiameter, backgroundDiameter)
+            background?.texture = backgroundTexture
+            background?.size = CGSizeMake(backgroundDiameter, backgroundDiameter)
 
-            size = backGround?.size ?? CGSizeZero
+            size = background?.size ?? CGSizeZero
         }
     }
 
-    var size: CGSize = CGSizeZero
-
-    var backGround: SKSpriteNode?
+    private var background: SKSpriteNode?
     private var dPad: SKSpriteNode?
+    private var size: CGSize = CGSizeZero
 
     public class func new(backgroundTexture: SKTexture? = nil,
         supportedDirections: Set<Direction>) -> DPad {
             let dPad = DPad()
 
             let frameworkBundle = NSBundle(forClass: self)
-            let defaultBackgroundImage = UIImage(named: "thumbDefault", inBundle: frameworkBundle, compatibleWithTraitCollection: nil)
-            dPad.backgroundTexture = backgroundTexture ?? SKTexture(image: defaultBackgroundImage!)
+            let defaultbackgroundImage = UIImage(named: "thumbDefault", inBundle: frameworkBundle, compatibleWithTraitCollection: nil)
+            dPad.backgroundTexture = backgroundTexture ?? SKTexture(image: defaultbackgroundImage!)
             dPad.supportedDirections = supportedDirections
 
             return dPad
@@ -58,17 +56,17 @@ final public class DPad: SKNode {
         super.init()
 
         userInteractionEnabled = true
-        backGround = SKSpriteNode()
+        background = SKSpriteNode()
         dPad = SKSpriteNode()
         dPad?.zPosition += 0.01
 
-        guard let backGround = backGround,
+        guard let background = background,
             dPad = dPad else {
                 print("Failed to initialize child nodes")
                 return
         }
 
-        dPad.addChild(backGround)
+        dPad.addChild(background)
         addChild(dPad)
     }
 
@@ -80,15 +78,16 @@ final public class DPad: SKNode {
         super.touchesMoved(touches, withEvent: event)
 
         // Set direction
-        guard let background = backGround else {
+        guard let background = background else {
             print("Failed to set up background")
             return
         }
 
+        /// Create vector from current touch
         let current = touches.first!.locationInNode(background)
-
         let vec = Vec2(x: current.x, y: current.y)
 
+        /// Create a new vector constrained according to the directions supported by the DPad instance
         let constrainedVec = constrainedVector(vec, supportedDirections: supportedDirections)
 
         dPad?.position.x += constrainedVec.point.x
