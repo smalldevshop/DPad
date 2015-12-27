@@ -10,14 +10,9 @@ import Foundation
 import UIKit
 import SpriteKit
 
-public protocol DPadDelegate {
-    func directionDidChange(direction: DPad.Direction)
-}
-
 final public class DPad: SKNode {
 
-    public var delegate: DPadDelegate?
-    var movementVector: Vec2 = Vec2(x: 0.0, y: 0.0)
+    public var direction: DPad.Direction = DPad.Direction.None
     var initialPosition: CGPoint?
 
     public enum Direction: Vec2 {
@@ -103,15 +98,15 @@ final public class DPad: SKNode {
         if constrainedVec.magnitude > CGFloat(M_PI_2) {
             switch constrainedVec.direction(constrainedVec.angle) {
             case .None:
-                delegate?.directionDidChange(.None)
+                direction = .None
             case .Up:
-                delegate?.directionDidChange(.Up)
+                direction = .Up
             case .Down:
-                delegate?.directionDidChange(.Down)
+                direction = .Down
             case .Right:
-                delegate?.directionDidChange(.Right)
+                direction = .Right
             case .Left:
-                delegate?.directionDidChange(.Left)
+                direction = .Left
             }
         }
 
@@ -120,8 +115,8 @@ final public class DPad: SKNode {
     public override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesEnded(touches, withEvent: event)
 
-        // Update delegate
-        delegate?.directionDidChange(.None)
+        // Update direction
+        direction = .None
     }
 
     override public var position: CGPoint {

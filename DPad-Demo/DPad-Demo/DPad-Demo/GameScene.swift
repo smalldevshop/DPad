@@ -34,7 +34,6 @@ class GameScene: SKScene {
             if dPad == nil {
                 dPad = DPad.new(nil, supportedDirections: [.Up, .Down, .Left, .Right])
 
-                dPad?.delegate = self
                 dPad?.xScale = 0.5
                 dPad?.yScale = 0.5
 
@@ -50,7 +49,22 @@ class GameScene: SKScene {
     }
    
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+        super.update(currentTime)
+        motion?.invalidate()
+        motion = nil
+        let direction = dPad?.direction ?? DPad.Direction.None
+        switch direction {
+            case .None:
+                break
+            case .Up:
+                motion = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "moveUp", userInfo: nil, repeats: true)
+            case .Down:
+                motion = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "moveDown", userInfo: nil, repeats: true)
+            case .Left:
+                motion = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "moveLeft", userInfo: nil, repeats: true)
+            case .Right:
+                motion = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "moveRight", userInfo: nil, repeats: true)
+        }
     }
 
     func moveUp() {
@@ -67,24 +81,5 @@ class GameScene: SKScene {
 
     func moveRight() {
         character?.position = CGPointMake(character!.position.x + 1, character!.position.y)
-    }
-}
-
-extension GameScene: DPadDelegate {
-    func directionDidChange(direction: DPad.Direction) {
-        motion?.invalidate()
-        motion = nil
-        switch direction {
-            case .None:
-                break
-            case .Up:
-                motion = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "moveUp", userInfo: nil, repeats: true)
-            case .Down:
-                motion = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "moveDown", userInfo: nil, repeats: true)
-            case .Left:
-                motion = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "moveLeft", userInfo: nil, repeats: true)
-            case .Right:
-                motion = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "moveRight", userInfo: nil, repeats: true)
-            }
     }
 }
