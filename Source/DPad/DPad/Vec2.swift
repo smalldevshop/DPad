@@ -20,7 +20,7 @@ public struct Vec2 {
 
     /// Computed point from vector.
     var point: CGPoint {
-        return CGPointMake(x, y)
+        return CGPoint(x:x, y:y)
     }
 
     /// Computed length of vector.

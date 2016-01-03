@@ -30,7 +30,7 @@ final public class DPad: SKNode {
             let backgroundDiameter = min(textureSize.width, textureSize.height)
 
             background?.texture = backgroundTexture
-            background?.size = CGSizeMake(backgroundDiameter, backgroundDiameter)
+            background?.size = CGSize(width: backgroundDiameter, height: backgroundDiameter)
 
             size = background?.size ?? CGSizeZero
         }
