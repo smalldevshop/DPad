@@ -32,10 +32,7 @@ class GameScene: SKScene {
             let location = touch.locationInNode(self)
 
             if dPad == nil {
-                dPad = DPad.new(nil, supportedDirections: [.Up, .Down, .Left, .Right])
-
-                dPad?.xScale = 0.5
-                dPad?.yScale = 0.5
+                dPad = DPad.new(supportedDirections: [.Up, .Down, .Left, .Right])
 
                 guard let dPad = dPad else {
                     print("Failed to create D-Pad")
