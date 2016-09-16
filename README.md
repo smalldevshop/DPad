@@ -7,7 +7,7 @@ A reusable D-Pad framework for use in conjunction with [SpriteKit](https://devel
 
 <p align="center" >
 <br/>
-<img src="https://raw.github.com/mattthousand/dpad/master/dpad.gif" alt="Overview" />
+<img src="https://raw.github.com/nicethings/dpad/master/dpad.gif" alt="Overview" />
 <br/>
 </p>
 
